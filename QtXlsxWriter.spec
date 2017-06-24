@@ -18,7 +18,7 @@ Patch0:         QtXlsxWriter-LIB_SUFFIX-support.patch
 Patch1:         QtXlsxWriter-SOVERSION-support.patch
 
 BuildRequires:  cmake >= 3.2
-Requires:       qt5-qtbase-devel
+BuildRequires:  qt5-qtbase-devel
 
 %description
 The Qt Xlsx Module provides a set of classes to read and write Excel files. It

@@ -1,0 +1,31 @@
+diff -uNr QtXlsxWriter.orig/CMakeLists.txt QtXlsxWriter/CMakeLists.txt
+--- QtXlsxWriter.orig/CMakeLists.txt	2017-06-24 12:01:03.418915642 +0300
++++ QtXlsxWriter/CMakeLists.txt	2017-06-24 12:02:13.919085465 +0300
+@@ -60,11 +60,12 @@
+ #####
+ INSTALL(TARGETS QtXlsxWriter
+   RUNTIME DESTINATION bin
+-  LIBRARY DESTINATION lib
+-  ARCHIVE DESTINATION lib
++  LIBRARY DESTINATION lib${LIB_SUFFIX}
++  ARCHIVE DESTINATION lib${LIB_SUFFIX}
+ )
+ 
+-INSTALL(FILES  ${CMAKE_CURRENT_BINARY_DIR}/QtXlsxWriterConfig.cmake DESTINATION lib/cmake/${PROJECT_NAME})
++INSTALL(FILES  ${CMAKE_CURRENT_BINARY_DIR}/QtXlsxWriterConfig.cmake DESTINATION
++    lib${LIB_SUFFIX}/cmake/${PROJECT_NAME})
+ 
+ SET(INCLUDE_FILES 
+   src/xlsx/xlsxabstractooxmlfile.h
+diff -uNr QtXlsxWriter.orig/QtXlsxWriterConfig.cmake.in QtXlsxWriter/QtXlsxWriterConfig.cmake.in
+--- QtXlsxWriter.orig/QtXlsxWriterConfig.cmake.in	2017-06-24 12:01:03.399915865 +0300
++++ QtXlsxWriter/QtXlsxWriterConfig.cmake.in	2017-06-24 12:03:35.385126159 +0300
+@@ -26,7 +26,7 @@
+ set(QtXlsxWriter_FOUND TRUE CACHE BOOL "" FORCE)
+ set(QtXlsxWriter_LIBS QtXlsxWriter)
+ set(QtXlsxWriter_LIB_BIN      ${QtXlsxWriter_CONFIG_PATH}/bin)
+-set(QtXlsxWriter_LIB_DIR      ${QtXlsxWriter_CONFIG_PATH}/lib)
++set(QtXlsxWriter_LIB_DIR      ${QtXlsxWriter_CONFIG_PATH}/lib@LIB_SUFFIX@)
+ set(QtXlsxWriter_INCLUDE_DIRS ${QtXlsxWriter_CONFIG_PATH}/include)
+ 
+ include_directories(BEFORE    ${QtXlsxWriter_INCLUDE_DIRS})

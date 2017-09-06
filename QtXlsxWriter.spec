@@ -1,21 +1,11 @@
-%global commit  6895d8b
-%global vermagic 0.3.0
-%global snapshot .git20170624.%{commit}
-
 Name:           QtXlsxWriter
-Version:        %{vermagic}
-Release:        1%{snapshot}%{?dist}
+Version:        0.5
+Release:        1%{?dist}
 Summary:        .xlsx file reader and writer for Qt5
 
 License:        MIT
-URL:            https://github.com/VSRonin/QtXlsxWriter
-
-# git clone https://github.com/VSRonin/QtXlsxWriter
-# cd QtXlsxWriter
-# git archive --prefix=QtXlsxWriter/ master | bzip2 >../QtXlsxWriter.tar.bz2
-Source0:        QtXlsxWriter.tar.bz2
-Patch0:         QtXlsxWriter-LIB_SUFFIX-support.patch
-Patch1:         QtXlsxWriter-SOVERSION-support.patch
+URL:            https://github.com/rbulygin/QtXlsxWriter
+Source0:        https://github.com/rbulygin/QtXlsxWriter/archive/v%{version}.tar.gz
 
 BuildRequires:  cmake >= 3.2
 BuildRequires:  qt5-qtbase-devel
@@ -40,9 +30,7 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -q -n QtXlsxWriter
-%patch0 -p1
-%patch1 -p1
+%setup -q
 
 
 %build
@@ -76,5 +64,9 @@ popd
 
 
 %changelog
+* Wed Sep 06 2017 Jajauma's Packages <jajauma@yandex.ru> - 0.5-1
+- Update to latest release from rbulygin/QtXlsxWriter
+- Drop upstreamed pacthes
+
 * Sat Jun 24 2017 Jajauma's Packages <jajauma@yandex.ru> - 0.2.2-1.git20170624.6895d8b
 - Initial release
